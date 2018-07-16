@@ -1,0 +1,100 @@
+﻿@model HouseRent.Models.Advertise
+
+@{
+    ViewData["Title"] = "Post an Advertise";
+}
+
+<h3>Create an advertisement for your house</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Heading" class="control-label"></label>
+                <input asp-for="Heading" class="form-control" />
+                <span asp-validation-for="Heading" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RentDate" class="control-label"></label>
+                <input asp-for="RentDate" class="form-control" />
+                <span asp-validation-for="RentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YoutubeLink" class="control-label"></label>
+                <input asp-for="YoutubeLink" class="form-control" />
+                <span asp-validation-for="YoutubeLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlatSize" class="control-label"></label>
+                <input asp-for="FlatSize" class="form-control" />
+                <span asp-validation-for="FlatSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlatType" class="control-label"></label>
+                <select name="FlatType" class="form-control">
+                    <option value="Apartment">Apartment</option>
+                    <option value="Penthouse" >Penthouse</option>
+                    <option value="Duplex">Duplex</option>
+                    <option value="Room">Room</option>
+                    <option value="Plaza" >Plaza</option>
+                    <option value="Building">Building</option>
+                    <option value="Plot">Plot</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <select name="Category" class="form-control">
+                    <option value="Anyone">Anyone</option>
+                    <option value="Male Bachelor" selected>Male Bachelor</option>
+                    <option value="Female Bachelor">Female Bachelor</option>
+                    <option value="Family">Family</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rent" class="control-label"></label>
+                <input asp-for="Rent" class="form-control" />
+                <span asp-validation-for="Rent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlatDetails" class="control-label"></label>
+                <input asp-for="FlatDetails" class="form-control" />
+                <span asp-validation-for="FlatDetails" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UtilitiesBill" class="control-label"></label>
+                <input asp-for="UtilitiesBill" class="form-control" />
+                <span asp-validation-for="UtilitiesBill" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherBill" class="control-label"></label>
+                <input asp-for="OtherBill" class="form-control" />
+                <span asp-validation-for="OtherBill" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Images </label>
+                <input type="file" name="imgs" id="imgs" accept=".jpg, .jpeg, .png" multiple required/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

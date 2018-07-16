@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNetCore.Http
+@model HouseRent.Models.User
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h2>Your profile</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contact)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Avatar)
+        </dt>
+        <dd>
+            <img src="@Url.Action("GetImg", "Users", new { id = Model.ID})" width="100" height="100" />
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (@Context.Session.GetString("sEmail") == Model.Email)
+    {
+        <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a>
+    }
+    |
+    <a asp-action="Delete" asp-route-id="@Model.ID">Delete Account</a>
+
+</div>

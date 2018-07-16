@@ -1,0 +1,89 @@
+﻿@model HouseRent.Models.Advertise
+
+@{
+    ViewData["Title"] = "Edit your advertise";
+}
+
+<h2>Edit your advertise</h2> 
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Heading" class="control-label"></label>
+                <input asp-for="Heading" class="form-control" />
+                <span asp-validation-for="Heading" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="UserMail" />
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RentDate" class="control-label"></label>
+                <input asp-for="RentDate" class="form-control" />
+                <span asp-validation-for="RentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YoutubeLink" class="control-label"></label>
+                <input asp-for="YoutubeLink" class="form-control" />
+                <span asp-validation-for="YoutubeLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlatSize" class="control-label"></label>
+                <input asp-for="FlatSize" class="form-control" />
+                <span asp-validation-for="FlatSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlatType" class="control-label"></label>
+                <input asp-for="FlatType" class="form-control" />
+                <span asp-validation-for="FlatType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rent" class="control-label"></label>
+                <input asp-for="Rent" class="form-control" />
+                <span asp-validation-for="Rent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlatDetails" class="control-label"></label>
+                <input asp-for="FlatDetails" class="form-control" />
+                <span asp-validation-for="FlatDetails" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UtilitiesBill" class="control-label"></label>
+                <input asp-for="UtilitiesBill" class="form-control" />
+                <span asp-validation-for="UtilitiesBill" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherBill" class="control-label"></label>
+                <input asp-for="OtherBill" class="form-control" />
+                <span asp-validation-for="OtherBill" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="MyPosts">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

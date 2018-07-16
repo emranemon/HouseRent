@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Welcome to House Rent Service";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 15px;
+}
+
+.paragraph {
+    text-size-adjust: auto;
+
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@@media screen and (max-width:600px) {
+    .column {
+        width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+    <img class="img-responsive" src="~/images/banner1.png" />
+
+    <div class="alert alert-danger alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <marquee> <strong>Do not pay</strong> 
+        Or Make a deal before you see the house by visiting.
+        </marquee>
+        
+    </div>
+    <div class="row">
+        <div class="column">
+            <img class="img-responsive" src="~/images/house.jpg" width="550" height="400">
+        </div>
+
+        <div class="column">
+            <h1>House Rent Service</h1>
+            <p class="paragraph">
+                <q>Home sweet home.</q> Is a proverb going on. But in today's life finding a comfort
+                home is a big challenge for us. We, the people of Dhaka city are facing a
+                lots of problem with it. Sometimes we find a home but location is not appropriate.
+                Sometimes house rent goes beyond our range. Moreover the bachelor people are hardly
+                to find a home for them, the owner of the home can be rude sometimes. Apart from this the
+                utility services can be found very poor in some case. We think about to solve all of these
+                problems through our project. Our project is going to solve of house rent problem. There are
+                already some website to help to find a home in Bangladesh. All these website do not help all
+                the people who want to rent a home. So we will try to create a user friendly website or application
+                which can solve the problem of all categories' people and also save the time.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

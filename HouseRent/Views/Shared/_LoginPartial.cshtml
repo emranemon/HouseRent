@@ -1,0 +1,28 @@
+﻿@using System
+@using Microsoft.AspNetCore.Http
+
+@{
+
+    var condition = (String.IsNullOrEmpty(@Context.Session.GetString("sEmail"))); 
+}
+
+@if (condition)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-area="" asp-controller="Users" asp-action="Create">Create Account</a></li>
+        <li><a asp-area="" asp-controller="Users" asp-action="Login">Log in</a></li>
+    </ul>
+
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-area="" asp-controller="Users" asp-action="Details" asp-route-id="@Context.Session.GetString("sId")">Welcome, @Context.Session.GetString("sName")</a></li>
+        @if(@Context.Session.GetString("sRole") == "admin")
+        {
+            <li><a asp-area="" asp-controller="Users" asp-action="Index">Admin Panel</a></li>
+        }
+        <li><a asp-area="" asp-controller="Users" asp-action="Logout">Log Out</a></li>
+    </ul>
+
+}

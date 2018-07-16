@@ -1,0 +1,287 @@
+﻿@model HouseRent.Models.Advertise
+@using Microsoft.AspNetCore.Http
+@using System;
+
+
+@{
+    ViewData["Title"] = @Html.DisplayFor(model => model.Heading);
+
+}
+
+<h2>@Html.DisplayFor(model => model.Heading) </h2>
+<br />
+
+@*Google map starts....*@
+<body>
+    <style>
+        #map {
+            height: 400px;
+            width: 400px;
+        }
+    </style>
+    <h3> See in Google map </h3>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function area() {
+            var location = "@Model.Address";
+            return location;
+        }
+    </script>
+
+    <script src="~/googlemap/googlemap.js"></script>
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcNrI8A1S4IInSiDqN730I5moq-Hv-k88&callback=initMap">
+    </script>
+</body>
+@*Google map Done!!!!*@
+
+<br /><br />
+<h3>Review</h3>
+<div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+    @{
+        int Five = 0, Four = 0, Three = 0, Two = 0, One = 0;
+        int YourRate = 0;
+        string user = @Context.Session.GetString("sEmail");
+    }
+    @foreach (var review in Model.Reviews)
+    {
+        //assigning your rating
+        if (review.Reviewer == user)
+        {
+            YourRate = review.ReviewStar;
+        }
+
+        if (review.ReviewStar == 5)
+        {
+            Five++;
+        }
+        else if (review.ReviewStar == 4)
+        {
+            Four++;
+        }
+        else if (review.ReviewStar == 3)
+        {
+            Three++;
+        }
+        else if (review.ReviewStar == 2)
+        {
+            Two++;
+        }
+        else if (review.ReviewStar == 1)
+        {
+            One++;
+        }
+    }
+    @{
+        double totalRatings = Five + Four + Three + Two + One;
+        double totalStars = Five * 5 + Four * 4 + Three * 3 + Two * 2 + One * 1;
+        double avgRating = totalStars / totalRatings;
+
+        for (int i = 1; i <= 5; i++)
+        {
+            if (i <= Math.Round(avgRating))
+            {
+                <span class="fa fa-star checked"></span>
+            }
+            else
+            {
+                <span class="fa fa-star"></span>
+            }
+
+        }
+
+    }
+
+    <p> <b>Rating:</b> @System.Math.Round(avgRating, 2) Out of 5 (<b>Total Review:</b> @totalRatings)</p>
+    <p><b>5-Stars: </b> @Five &nbsp; <b>4-Stars:</b> @Four &nbsp; <b>3-Stars:</b>
+    @Three &nbsp; <b>2-Stars:</b> @Two &nbsp; <b>1-Stars:</b> @One</p>
+</div>
+
+@*Do review*@
+<div class="container">
+    @if (YourRate > 0)
+    {
+        <h4> You Rated @YourRate Out of 5.</h4>
+    }
+    else
+    {
+        <h4>You didn't rate it. You can always change your Ratings.</h4>
+    }
+
+    <form asp-action="DoReview">
+        <input type="hidden" name="AdvertiseID" value="@Model.ID" />
+
+        <label class="radio-inline">
+            <input type="radio" name="ReviewStar" value="5" required>5-Star
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="ReviewStar" value="4">4-Star
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="ReviewStar" value="3">3-Star
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="ReviewStar" value="2">2-Star
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="ReviewStar" value="1">1-Star
+        </label>
+
+        <input type="submit" value="Rate This" class="btn btn-default btn-sm" />
+    </form>
+</div>
+
+<div>
+    <h3>Details Informations</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserMail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserMail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PostTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PostTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RentDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RentDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FlatSize)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FlatSize)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rent)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rent)
+            &#2547;
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FlatDetails)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FlatDetails)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UtilitiesBill)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UtilitiesBill)
+            &#2547;
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherBill)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OtherBill)
+            &#2547;
+        </dd>
+    </dl>
+</div>
+
+<h3>House Images</h3>
+<table>
+    <tr>
+        @foreach (var img in Model.Images)
+        {
+            <td><img src="@Url.Action("GetImg", "Advertises", new { id = img.ID })" class="img-responsive" height="200" width="200" /></td>
+        }
+
+    </tr>
+</table>
+
+<br /><br />
+<h3>See in Youtube</h3>
+<iframe width="854" height="480" src=@Model.YoutubeLink frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<br /><br />
+@*comment box*@
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DoComment">
+            <div>
+                <input type="hidden" name="AdvertiseID" value="@Model.ID" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Write a Comment</label>
+                <textarea name="CommentText" class="form-control" rows="4" cols="50" required></textarea>
+            </div>
+            <div class="form-group">
+                <div>
+                    <input type="checkbox" name="Anonymous" value="True"> Anonymous Comment
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+@*Comment box end*@
+<div>
+    @foreach (var cmnt in Model.Comments)
+    {
+        <table class="table-responsive">
+            <tr>
+                @if (cmnt.Anonymous)
+                {
+                    <th>Anonymous  &nbsp; &nbsp; </th>
+                }
+                else
+                {
+                    <th>@cmnt.Commenter &nbsp; &nbsp; </th>
+                }
+                <td>@cmnt.CommentTime &nbsp; &nbsp; </td>
+                @if (user == cmnt.Commenter)
+                {
+                    <td>  <a asp-action="DeleteComment" asp-route-id="@cmnt.ID" class="btn btn-warning btn-xs">Delete</a></td>
+                }
+
+            </tr>
+            <tr>
+                <td colspan="3"> @cmnt.CommentText</td>
+            </tr>
+        </table>
+        <br />
+    }
+</div>
+<br />
+
+

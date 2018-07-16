@@ -1,0 +1,10 @@
+E:\MVC Projects\HouseRent\HouseRent\bin\Debug\netcoreapp2.0\HouseRent.deps.json
+E:\MVC Projects\HouseRent\HouseRent\bin\Debug\netcoreapp2.0\HouseRent.runtimeconfig.json
+E:\MVC Projects\HouseRent\HouseRent\bin\Debug\netcoreapp2.0\HouseRent.runtimeconfig.dev.json
+E:\MVC Projects\HouseRent\HouseRent\bin\Debug\netcoreapp2.0\HouseRent.dll
+E:\MVC Projects\HouseRent\HouseRent\obj\Debug\netcoreapp2.0\HouseRent.csproj.CoreCompileInputs.cache
+E:\MVC Projects\HouseRent\HouseRent\obj\Debug\netcoreapp2.0\HouseRent.AssemblyInfoInputs.cache
+E:\MVC Projects\HouseRent\HouseRent\obj\Debug\netcoreapp2.0\HouseRent.AssemblyInfo.cs
+E:\MVC Projects\HouseRent\HouseRent\bin\Debug\netcoreapp2.0\HouseRent.pdb
+E:\MVC Projects\HouseRent\HouseRent\obj\Debug\netcoreapp2.0\HouseRent.dll
+E:\MVC Projects\HouseRent\HouseRent\obj\Debug\netcoreapp2.0\HouseRent.pdb
