@@ -4,10 +4,11 @@
 <b>Asynchronous programming, Javascript, Bootstrap, HTML, CSS</b> <br>
 <br>
 <b>Key Features in technical sense:</b> <br>
-<b>1. Substrings: (Youtube link analysis)</b> <br>
-<b>2. Basic CRUD Operations </b> <br>
-<b>3. Image Upload in Database and Show from Database </b> <br>
-<b>4. Google map using GeoCode Api & Places Api </b> <br>
+<b>1. Session Variable (Login Purpose)</b> <br>
+<b>2. Substrings: (Youtube link analysis)</b> <br>
+<b>3. Basic CRUD Operations </b> <br>
+<b>4. Image Upload in Database and Show from Database </b> <br>
+<b>5. Google map using GeoCode Api & Places Api </b> <br>
 <h2>Other Contributors </h2>
 <b>Samia Islam, CSE Dept, East West University </b> <br>
 <b>Monira Mukta, CSE Dept, East West University </b>
