@@ -52,8 +52,8 @@ namespace HouseRent.Controllers
             var Add = from a in _context.Advertise
                       select a;
 
-            //if we do not set, DateTime type returns this date 1/1/0001 12:00:00 AM, 
-            if (rentfrom.ToString() != "1/1/0001 12:00:00 AM")
+            //if we do not set, DateTime type returns this date 1/1/0001 12:00:00 AM, or "01-Jan-01 12:00:00 AM"
+            if (rentfrom.ToString() != "1/1/0001 12:00:00 AM" && rentfrom.ToString() != "01-Jan-01 12:00:00 AM")
             {
                 Add = Add.Where(f => f.RentDate <= rentfrom);
             }

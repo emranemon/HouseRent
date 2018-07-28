@@ -8,3 +8,4 @@ E:\MVC Projects\HouseRent\HouseRent\obj\Debug\netcoreapp2.0\HouseRent.AssemblyIn
 E:\MVC Projects\HouseRent\HouseRent\bin\Debug\netcoreapp2.0\HouseRent.pdb
 E:\MVC Projects\HouseRent\HouseRent\obj\Debug\netcoreapp2.0\HouseRent.dll
 E:\MVC Projects\HouseRent\HouseRent\obj\Debug\netcoreapp2.0\HouseRent.pdb
+E:\MVC Projects\HouseRent\HouseRent\obj\Debug\netcoreapp2.0\HouseRent.csprojResolveAssemblyReference.cache
