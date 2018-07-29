@@ -229,7 +229,16 @@
 
 <br /><br />
 <h3>See in Youtube</h3>
-<iframe width="854" height="480" src=@Model.YoutubeLink frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+@{ 
+    if(String.IsNullOrEmpty(Model.YoutubeLink))
+    {
+        <p style="color:darkred;">No Valid Youtube URL Given </p>
+    }
+    else
+    {
+        <iframe width="854" height="480" src=@Model.YoutubeLink frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    }
+}
 
 <br /><br />
 @*comment box*@

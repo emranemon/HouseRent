@@ -33,17 +33,25 @@ namespace HouseRent.Controllers
         //A function to make normal youtube link to embeded youtube link
         public string YTlink(string link)
         {
-            int youtu = link.IndexOf("youtu.be");
-            if (youtu != -1) // obiviously in youtu.be category
+            try
             {
-                link = link.Substring(link.IndexOf("be/") + 3, 11);
-            }
-            else // in youtube.com category
-            {
-                link = link.Substring(link.IndexOf("?v=") + 3, 11);
-            }
+                int youtu = link.IndexOf("youtu.be");
+                if (youtu != -1) // obiviously in youtu.be category
+                {
+                    link = link.Substring(link.IndexOf("be/") + 3, 11);
+                }
+                else // in youtube.com category
+                {
+                    link = link.Substring(link.IndexOf("?v=") + 3, 11);
+                }
 
-            return "https://www.youtube.com/embed/" + link;
+                return "https://www.youtube.com/embed/" + link;
+            }
+            catch
+            {
+                //if given youtube link is not valid, it returns null 
+                return null;
+            }
         }
 
         // GET: Advertises
