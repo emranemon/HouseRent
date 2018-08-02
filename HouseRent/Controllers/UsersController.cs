@@ -139,15 +139,19 @@ namespace HouseRent.Controllers
                 try
                 {
                     //for image : if given an image or not
-                    if (img.Length > 0)
+                    if(img != null)
                     {
-                        using (var ms = new MemoryStream())
+                        if (img.Length > 0)
                         {
-                            img.CopyTo(ms);
-                            var fileBytes = ms.ToArray();
-                            user.Avatar = fileBytes;
+                            using (var ms = new MemoryStream())
+                            {
+                                img.CopyTo(ms);
+                                var fileBytes = ms.ToArray();
+                                user.Avatar = fileBytes;
+                            }
                         }
-                    } 
+                    }
+                    
                     user.Role = "normal"; //others user are either admin or banned
                     _context.Add(user);
                     await _context.SaveChangesAsync();

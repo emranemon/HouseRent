@@ -26,10 +26,10 @@ namespace HouseRent.Controllers
         //A funtion to return image path from database
         public FileContentResult GetImg(int id)
         {
-            var image = _context.Image.Find(id).FlatImage;            
+            var image = _context.Image.Find(id).FlatImage;
             return image != null ? new FileContentResult(image, "image/png") : null;
-        }   
-        
+        }
+
         //A function to make normal youtube link to embeded youtube link
         public string YTlink(string link)
         {
@@ -79,14 +79,14 @@ namespace HouseRent.Controllers
             {
                 Add = Add.Where(c => c.Category.Contains(category));
             }
-            
+
             //rent need to convert into int type from string
             if (!String.IsNullOrEmpty(rent))
             {
                 int low = 1000 * Int32.Parse(rent.Substring(0, 2));
                 int up = 1000 * Int32.Parse(rent.Substring(4, 2));
                 Add = Add.Where(r => r.Rent >= low
-                    && r.Rent <= up);               
+                    && r.Rent <= up);
             }
 
             return View(await Add.ToListAsync());
@@ -178,8 +178,8 @@ namespace HouseRent.Controllers
 
             //checking if user reviewed once or not...
             var Reviewed = await _context.Review.SingleOrDefaultAsync(r => r.Reviewer == usr && r.AdvertiseID == review.AdvertiseID);
-            
-            if(Reviewed == null)
+
+            if (Reviewed == null)
             {
                 //if user reviewing for an advertise for the first time 
                 _context.Add(review);
@@ -192,7 +192,7 @@ namespace HouseRent.Controllers
                 _context.Update(Reviewed);
                 await _context.SaveChangesAsync();
 
-            } 
+            }
 
 
             return RedirectToAction("Details", new { id = review.AdvertiseID });
@@ -228,7 +228,7 @@ namespace HouseRent.Controllers
             var comment = await _context.Comment.SingleOrDefaultAsync(m => m.ID == id);
 
             //this means only commenter can only delete his comments
-            if(HttpContext.Session.GetString("sEmail") == comment.Commenter)
+            if (HttpContext.Session.GetString("sEmail") == comment.Commenter)
             {
                 _context.Comment.Remove(comment);
                 await _context.SaveChangesAsync();
@@ -251,8 +251,8 @@ namespace HouseRent.Controllers
             {
                 //if logged in, user exist or deleted!!
 
-                var userexist =await _context.User.SingleOrDefaultAsync(u => u.Email == tempUser);
-                if(userexist == null)
+                var userexist = await _context.User.SingleOrDefaultAsync(u => u.Email == tempUser);
+                if (userexist == null)
                 {
                     return RedirectToAction("Logout", "Users");
                 }
